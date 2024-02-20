@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        /*
+        This is an invoice
+        */
+    </script>
+    <title>Invoice</title>
+</head>
+<body>
+    <script>
+     // Product 1
+     let item1 = 'Gillette Sensor 3 Razor';
+     let quantity1 = 2;
+     let price1 = 1.23;
+     
+    // Product 2
+    let item2 = 'Barbasol Shaving Cream';
+     let quantity2 = 1;
+     let price2 = 2.64;
+
+    // Product 3
+    let item3 = 'Nautica Cologne';
+     let quantity3 = 1;
+     let price3 = 6.17;
+
+    // Product 4
+    let item4 = 'Rubbing Alcohol';
+     let quantity4 = 3;
+     let price4 = 0.98;
+
+    // Product 5
+    let item5 = 'Colgate Classic Toothbrush';
+     let quantity5 = 12;
+     let price5 = 1.89;
+
+    // Compute extended prices
+    let extended_price1 = quantity1*price1;
+    let extended_price2 = quantity2*price2;
+    let extended_price3 = quantity3*price3;
+    let extended_price4 = quantity4*price4;
+    let extended_price5 = quantity5*price5;
+
+    // Subtotal
+    let subtotal = extended_price1 + extended_price2 + extended_price3 + extended_price4 + extended_price5;
+
+    // Shipping
+let shipping = 0;
+if (subtotal <= 50) {
+    shipping = 2;
+} else if (subtotal <= 100) {
+    shipping = 5;
+} else {
+    shipping = subtotal * 0.05;
+}
+
+    // Tax Rates
+    let tax_rate = 0.0575;
+    let tax_amount = subtotal*tax_rate;
+
+    // Total
+    let Total = tax_amount + subtotal + shipping;
+    </script>
+
+    <script>
+        document.write(`
+        <table border="1" style="margin-left: auto; margin-right: auto; text-align: center; color: black;">
+            <tr>
+                <th>Item Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Extended Price</th>
+            </tr>
+            <tr>
+                <td>${item1}</td>
+                <td>${quantity1}</td>
+                <td>${price1.toFixed(2)}</td>
+                <td>${extended_price1.toFixed(2)}</td>
+            </tr>
+            <tr>
+                <td>${item2}</td>
+                <td>${quantity2}</td>
+                <td>${price2.toFixed(2)}</td>
+                <td>${extended_price2.toFixed(2)}</td>
+            </tr>
+            <tr>
+                <td>${item3}</td>
+                <td>${quantity3}</td>
+                <td>${price3.toFixed(2)}</td>
+                <td>${extended_price3.toFixed(2)}</td>
+            </tr>
+            <tr>
+                <td>${item4}</td>
+                <td>${quantity4}</td>
+                <td>${price4.toFixed(2)}</td>
+                <td>${extended_price4.toFixed(2)}</td>
+            </tr>
+            <tr>
+                <td>${item5}</td>
+                <td>${quantity5}</td>
+                <td>${price5.toFixed(2)}</td>
+                <td>${extended_price5.toFixed(2)}</td>
+            </tr>
+            <tr>
+                <td colspan="3">Subtotal</td>
+                <td>${subtotal.toFixed(2)}</td>
+            </tr>
+            <tr>
+                <td colspan="3">Tax @ 5.75%</td>
+                <td>${tax_amount.toFixed(2)}</td>
+            </tr>
+            <tr>
+                <td colspan="3">Shipping</td>
+                <td>${shipping.toFixed(2)}</td>
+            </tr>
+            <tr>
+                <td colspan="3"><b>Total</b></td>
+                <td><b>${Total.toFixed(2)}</b></td>
+            </tr>
+            </table>
+            <p style="text-align: center;">Shipping Policy</p>
+            <p style="text-align: center;">Subtotal: $0 - $49.99 ------- $2 shipping</p>
+            <p style="text-align: center;">Subtotal: $50 - $99.99 ------ $5 shipping</p>
+            <p style="text-align: center;">Subtotal: Over $100 ----- 5% of Subtotal</p>
+        `)
+    </script>
+</body>
+</html>
